@@ -20,3 +20,16 @@ document.querySelector('#root').innerHTML = render(
       <Footer/>
   </div>
 );
+
+//Mobile menu toggle
+
+  const navToggle = document.querySelector('.nav-btn');
+  const mobileNav = document.querySelector('.rollout-nav');
+
+  navToggle.addEventListener("click", () => {
+    mobileNav.classList.toggle('nav-closed');
+  });
+
+mobileNav.addEventListener('click', () => {
+  mobileNav.classList.add('nav-closed');
+});
