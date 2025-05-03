@@ -1,4 +1,4 @@
-import '../Gallery.css';
+import './Gallery.css';
 
 export const Gallery = () => {
   return (<section className="gallery" id="gallery">

@@ -1,4 +1,4 @@
-import "../Contact.css"
+import "./Contact.css"
 export const Contact = () => {
   return (<section id="contact">
     <div className="container">

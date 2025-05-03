@@ -1,4 +1,4 @@
-import '../Menu.css';
+import './Menu.css';
 
 export const Menu = () => {
   return (
