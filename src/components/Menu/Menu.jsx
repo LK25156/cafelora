@@ -69,14 +69,10 @@ export const Menu = ({drinks}) => {
           </form>
         </div>
       </div>
-
       <div className="order-detail">
         <a href="/order.html">Detail objednávky</a>
       </div>
-    </div>
   </section>
-
-
   )
 };
 
