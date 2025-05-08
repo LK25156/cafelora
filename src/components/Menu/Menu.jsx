@@ -1,6 +1,8 @@
 import './Menu.css';
 import Drink from '../Drink/Drink'
 
+const SERVER_URL = 'http://localhost:4000'; 
+
 export const Menu = ({drinks}) => {
   return (
   <section className="menu" id="menu">

@@ -15,3 +15,5 @@ export const OrderItem = ({name, image}) => {
     </div>
   );
 };
+
+export default OrderItem;

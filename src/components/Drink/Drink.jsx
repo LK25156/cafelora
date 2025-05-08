@@ -28,3 +28,5 @@ export const Drink = ({id, name, ordered, image, layers}) => {
         </div>
   );
 }
+
+export default Drink;
