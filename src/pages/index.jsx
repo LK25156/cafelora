@@ -1,12 +1,16 @@
 import { render } from '@czechitas/render';
 import '../global.css';
 import './index.css';
+
+
 import  Header  from '../components/Header/Header';
-import  Banner  from '../components/Banner/Banner';
-import  Menu  from '../components/Menu/Menu';
-import  Gallery from '../components/Gallery/Gallery';
-import  Contact  from '../components/Contact/Contact';
 import  Footer  from '../components/Footer/Footer';
+import Banner from '../components/Banner/Banner';
+import Menu from '../components/Menu/Menu';
+import Gallery from '../components/Gallery/Gallery';
+import Contact from '../components/Contact/Contact';
+
+
 
 
   const API_BASE = 'http://localhost:4000/api';

@@ -12,7 +12,7 @@ const API_BASE = 'http://localhost:4000/api';
   const response = await fetch(`${API_BASE}/drinks?filter=ordered:eq:true&
     select=id,name,image`);
   const data = await response.json();
-  const drinksData = data.data;
+  const orderData = data.data;
 
 document.querySelector('#root').innerHTML = render(
   <div className="page">
