@@ -7,5 +7,5 @@ export const Footer = () => {
         Café Lóra je tréningový projekt v rámci Czechitas kurzu JavaScript 2
       </div>
     </div>
-  )
+  );
 };

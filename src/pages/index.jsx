@@ -9,11 +9,12 @@ import { Contact } from '../components/Contact/Contact';
 import { Footer } from '../components/Footer/Footer';
 
 
-
-  const response = await fetch(`http://localhost:4000/api/drinks`);
-  const json = await response.json();
-  const drinks = json.data;
-  console.log(drinks);
+  const API_BASE = 'http://localhost:4000/api';
+  // get data from api
+  const response = await fetch(`${API_BASE}/drinks`);
+  const data = await response.json();
+  const drinksData = data.data;
+  
 
   
 
@@ -22,7 +23,7 @@ document.querySelector('#root').innerHTML = render(
     <Header/>
     <main>
       <Banner/>
-      <Menu drinks={drinks} />
+      <Menu drinks={drinksData}/>
       <Gallery/>
       <Contact/>
     </main>
@@ -41,27 +42,37 @@ document.querySelector('#root').innerHTML = render(
 
 mobileNav.addEventListener('click', () => {
   mobileNav.classList.add('nav-closed');
-});
+})
 
-//posluchač události pro každý formulář
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-  
-    const id = event.target.dataset.id
-    fetch(`http://localhost:4000/api/drinks/${id}`, {
+//order forms
+const orderForms = document.querySelectorAll('.drink__controls');
+orderForms.forEach(form => {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const drinkId = Number(e.target.dataset.id);
+ 
+    // find drink in data
+    const drink = drinksData.find(drink=> drink.id === drinkId);
+    const orderValue = !drink.ordered;
+
+
+   //send order/cancelation to server
+    const response = await fetch(`${API_BASE}/drinks/${drinkId}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-    body: JSON.stringify([{ op: "replace", path: "/ordered", value: true }])
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Odpověď API:", data);
-      window.location.reload(); // Obnovení stránky
-    })
-    .catch(error => console.error("Chyba při objednávání:", error));
-  
-  
-  
+      headers: { 
+        "Content-Type": "application/json",
+      },
+    body: JSON.stringify([{ 
+      op: "replace", 
+      path: "/ordered", 
+      value: orderValue,
+    }]),
   });
-});
+
+    const data = await response.json();
+    console.log(data);
+
+      window.location.reload(); // Obnovení stránky
+    });
+  });
+
